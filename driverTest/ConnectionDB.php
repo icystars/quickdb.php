@@ -57,6 +57,17 @@ class ConnectionDB {
 	};
     }
 
+    function mysql_array_to_insert($query, $data){
+        echo "<br><p>----Comienza método mysql_array_to_instert(...).";
+	$str_data = "(\"" . implode('") , ("' , $data) . "\")";   //genera un string con los elementos del array, separados por una coma
+	echo "<br><p>----Strings concatenados. $str_data ";
+        $query = $query . $str_data;
+        echo "<br><p>----Consulta: $query";
+	$result = mysql_query( $query );
+        echo "<br><p>----Finalizando mysql_array_to_instert(...).";
+	return $result;
+    }
+
     function query($query){
         return mysql_query($query);
     }
